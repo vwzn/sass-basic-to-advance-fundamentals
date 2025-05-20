@@ -1,0 +1,49 @@
+// Advanced responsive mixins
+@mixin media-up($breakpoint-name) {
+    $min-width: breakpoint($breakpoint-name);
+
+    @media (min-width: $min-width) {
+        @content;
+    }
+}
+
+@mixin media-down($breakpoint-name) {
+    $next-breakpoints: map-remove($breakpoints, 'xs');
+    $breakpoint-names: map-keys($next-breakpoints);
+    $breakpoint-index: index($breakpoint-names, $breakpoint-name);
+
+    @if $breakpoint-index ==length($breakpoint-names) {
+        @content;
+    }
+
+    @else {
+        $next-breakpoint: nth($breakpoint-names, $breakpoint-index + 1);
+        $max-width: breakpoint($next-breakpoint) - 0.02;
+
+        @media (max-width: $max-width) {
+            @content;
+        }
+    }
+}
+
+@mixin media-between($lower, $upper) {
+    $min-width: breakpoint($lower);
+    $next-breakpoints: map-remove($breakpoints, 'xs');
+    $breakpoint-names: map-keys($next-breakpoints);
+    $upper-index: index($breakpoint-names, $upper);
+
+    @if $upper-index ==length($breakpoint-names) {
+        @media (min-width: $min-width) {
+            @content;
+        }
+    }
+
+    @else {
+        $next-breakpoint: nth($breakpoint-names, $upper-index + 1);
+        $max-width: breakpoint($next-breakpoint) - 0.02;
+
+        @media (min-width: $min-width) and (max-width: $max-width) {
+            @content;
+        }
+    }
+}

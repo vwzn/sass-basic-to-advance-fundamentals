@@ -1,0 +1,45 @@
+// Import all partials
+@import '01-partials/variables';
+@import '01-partials/reset';
+@import '01-partials/typography';
+
+// Import other modules
+@import '02-mixins';
+@import '03-extend';
+@import '04-functions';
+@import '05-if-else';
+
+// Medium level layout
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $spacing-md;
+
+    @include breakpoint(md) {
+        padding: $spacing-lg;
+    }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -#{$spacing-md};
+
+    &__item {
+        padding: 0 $spacing-md;
+        margin-bottom: $spacing-lg;
+
+        @include breakpoint(sm) {
+            width: 50%;
+        }
+
+        @include breakpoint(md) {
+            width: 33.333%;
+        }
+
+        @include breakpoint(lg) {
+            width: 25%;
+        }
+    }
+}

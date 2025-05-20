@@ -1,0 +1,26 @@
+// Main file that imports all basic concepts
+@import '01-variables';
+@import '02-nesting';
+@import '03-parent-selector';
+@import '05-comments';
+@import '06-basic-operations';
+@import '07-basic-mixins';
+
+// Basic reset
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// Full page styling
+html,
+body {
+    height: 100%;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $spacing-lg;
+}

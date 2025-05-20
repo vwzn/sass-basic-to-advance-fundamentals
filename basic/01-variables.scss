@@ -1,0 +1,17 @@
+// Basic variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$dark-color: #333333;
+$light-color: #f4f4f4;
+$font-stack: 'Helvetica', Arial, sans-serif;
+$spacing-sm: 10px;
+$spacing-md: 15px;
+$spacing-lg: 25px;
+$border-radius: 4px;
+
+body {
+    font-family: $font-stack;
+    color: $dark-color;
+    background-color: $light-color;
+    padding: $spacing-md;
+}

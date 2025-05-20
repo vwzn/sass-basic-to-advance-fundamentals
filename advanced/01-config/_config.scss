@@ -1,0 +1,52 @@
+// Advanced configuration using maps
+$colors: (
+    'primary': #3498db,
+    'secondary': #2ecc71,
+    'accent': #e74c3c,
+    'success': #27ae60,
+    'warning': #f39c12,
+    'danger': #c0392b,
+    'info': #2980b9,
+    'light': #f4f4f4,
+    'dark': #333333,
+    'white': #ffffff,
+    'black': #000000,
+);
+
+$font-weights: (
+    'light': 300,
+    'regular': 400,
+    'medium': 500,
+    'semi-bold': 600,
+    'bold': 700,
+    'extra-bold': 800,
+);
+
+$breakpoints: (
+    'xs': 0,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px,
+    'xxl': 1400px,
+);
+
+$spacings: (
+    'auto': auto,
+    '0': 0,
+    '1': 0.25rem,
+    '2': 0.5rem,
+    '3': 1rem,
+    '4': 1.5rem,
+    '5': 3rem,
+);
+
+$z-indices: (
+    'dropdown': 1000,
+    'sticky': 1020,
+    'fixed': 1030,
+    'modal-backdrop': 1040,
+    'modal': 1050,
+    'popover': 1060,
+    'tooltip': 1070,
+);

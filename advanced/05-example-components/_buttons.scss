@@ -1,0 +1,65 @@
+// Advanced buttons component
+@mixin button-variant($background, $hover-bg: null, $active-bg: null, $color: null) {
+    $hover-background: if($hover-bg, $hover-bg, color-darken($background, 10%));
+    $active-background: if($active-bg, $active-bg, color-darken($background, 15%));
+    $text-color: if($color, $color, color-contrast($background));
+
+    background-color: color($background);
+    color: $text-color;
+
+    &:hover {
+        background-color: $hover-background;
+        color: $text-color;
+    }
+
+    &:active,
+    &.active {
+        background-color: $active-background;
+        color: $text-color;
+    }
+}
+
+.btn {
+    display: inline-block;
+    font-weight: map-get($font-weights, 'medium');
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: spacing('2') spacing('3');
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+
+    &:disabled,
+    &.disabled {
+        opacity: 0.65;
+        pointer-events: none;
+    }
+}
+
+// Generate button variants
+@each $name, $value in $colors {
+    .btn-#{$name} {
+        @include button-variant($name);
+    }
+
+    .btn-outline-#{$name} {
+        border-color: color($name);
+        color: color($name);
+        background-color: transparent;
+
+        &:hover {
+            background-color: color($name);
+            color: color-contrast($name);
+        }
+    }
+}

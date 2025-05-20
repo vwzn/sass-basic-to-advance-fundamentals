@@ -1,0 +1,41 @@
+// Extend/Inheritance
+%button-base {
+    display: inline-block;
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    @include transition;
+}
+
+.button {
+    @extend %button-base;
+    background-color: $primary-color;
+    color: white;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}
+
+.button-secondary {
+    @extend %button-base;
+    background-color: $secondary-color;
+    color: white;
+
+    &:hover {
+        background-color: darken($secondary-color, 10%);
+    }
+}
+
+.button-accent {
+    @extend %button-base;
+    background-color: $accent-color;
+    color: white;
+
+    &:hover {
+        background-color: darken($accent-color, 10%);
+    }
+}

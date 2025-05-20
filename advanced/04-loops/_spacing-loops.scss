@@ -1,0 +1,63 @@
+// Generate margin and padding utility classes
+$sides: (
+    'top',
+    'right',
+    'bottom',
+    'left'
+);
+$side-abbr: (
+    't',
+    'r',
+    'b',
+    'l'
+);
+
+// Margin utilities
+@each $size-name, $size-value in $spacings {
+    .m-#{$size-name} {
+        margin: $size-value !important;
+    }
+
+    .mx-#{$size-name} {
+        margin-right: $size-value !important;
+        margin-left: $size-value !important;
+    }
+
+    .my-#{$size-name} {
+        margin-top: $size-value !important;
+        margin-bottom: $size-value !important;
+    }
+
+    @each $i, $side in enumerate($sides) {
+        $abbr: nth($side-abbr, $i);
+
+        .m#{$abbr}-#{$size-name} {
+            margin-#{$side}: $size-value !important;
+        }
+    }
+}
+
+// Padding utilities
+@each $size-name, $size-value in $spacings {
+    .p-#{$size-name} {
+        padding: $size-value !important;
+    }
+
+    .px-#{$size-name} {
+        padding-right: $size-value !important;
+        padding-left: $size-value !important;
+    }
+
+    .py-#{$size-name} {
+        padding-top: $size-value !important;
+        padding-bottom: $size-value !important;
+    }
+
+    @each $i, $side in enumerate($sides) {
+        $abbr: nth($side-abbr, $i);
+
+        .p#{$abbr}-#{$size-name} {
+            padding-#{$side}: $size-value !important;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+// Advanced breakpoint functions
+@function breakpoint($breakpoint-name) {
+    @if not map-has-key($breakpoints, $breakpoint-name) {
+        @error "Breakpoint '#{$breakpoint-name}' not found in $breakpoints map!";
+    }
+
+    @return map-get($breakpoints, $breakpoint-name);
+}
+
+@function spacing($spacing-name) {
+    @if not map-has-key($spacings, $spacing-name) {
+        @error "Spacing '#{$spacing-name}' not found in $spacings map!";
+    }
+
+    @return map-get($spacings, $spacing-name);
+}
+
+@function z-index($layer) {
+    @if not map-has-key($z-indices, $layer) {
+        @error "Z-index layer '#{$layer}' not found in $z-indices map!";
+    }
+
+    @return map-get($z-indices, $layer);
+}

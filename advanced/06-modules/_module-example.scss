@@ -1,0 +1,33 @@
+// Using @use and @forward to create modules
+@use '../01-config/config' as config;
+@use '../02-functions/color-functions' as color;
+@use '../03-mixins/responsive-mixins' as responsive;
+
+.module-example {
+    padding: config.$spacings('3');
+    background-color: color.color('light');
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    @include responsive.media-up('md') {
+        padding: config.$spacings('4');
+    }
+
+    &__header {
+        margin-bottom: config.$spacings('3');
+
+        &-title {
+            color: color.color('primary');
+            margin-bottom: config.$spacings('2');
+        }
+    }
+
+    &__body {
+        margin-bottom: config.$spacings('3');
+    }
+
+    &__footer {
+        border-top: 1px solid color.color('light', 0.5);
+        padding-top: config.$spacings('3');
+    }
+}

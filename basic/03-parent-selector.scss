@@ -1,0 +1,24 @@
+// Parent selector &
+.button {
+    background-color: $primary-color;
+    color: white;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+
+    &--secondary {
+        background-color: $secondary-color;
+
+        &:hover {
+            background-color: darken($secondary-color, 10%);
+        }
+    }
+
+    &--large {
+        padding: $spacing-md $spacing-lg;
+        font-size: 1.2em;
+    }
+}

@@ -1,0 +1,55 @@
+// More advanced mixins
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+@mixin box-shadow($x: 0, $y: 2px, $blur: 5px, $color: rgba(0, 0, 0, 0.2)) {
+    box-shadow: $x $y $blur $color;
+}
+
+@mixin border-radius($radius: $border-radius-md) {
+    border-radius: $radius;
+}
+
+@mixin breakpoint($point) {
+    @if $point ==sm {
+        @media (min-width: $screen-sm) {
+            @content;
+        }
+    }
+
+    @else if $point ==md {
+        @media (min-width: $screen-md) {
+            @content;
+        }
+    }
+
+    @else if $point ==lg {
+        @media (min-width: $screen-lg) {
+            @content;
+        }
+    }
+
+    @else if $point ==xl {
+        @media (min-width: $screen-xl) {
+            @content;
+        }
+    }
+}
+
+.card {
+    padding: $spacing-md;
+    margin-bottom: $spacing-lg;
+    background-color: white;
+    @include border-radius;
+    @include box-shadow;
+    @include transition;
+
+    &:hover {
+        @include box-shadow(0, 4px, 10px, rgba(0, 0, 0, 0.15));
+    }
+
+    @include breakpoint(md) {
+        padding: $spacing-lg;
+    }
+}

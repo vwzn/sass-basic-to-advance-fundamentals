@@ -1,0 +1,29 @@
+// Generate responsive grid classes
+$grid-columns: 12;
+
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+    @include media-up($breakpoint-name) {
+
+        // Columns
+        @for $i from 1 through $grid-columns {
+            .col-#{$breakpoint-name}-#{$i} {
+                @include make-col($i, $grid-columns);
+            }
+        }
+
+        // Offset
+        @for $i from 0 through ($grid-columns - 1) {
+            @if $i >0 {
+                .offset-#{$breakpoint-name}-#{$i} {
+                    @include make-col-offset($i, $grid-columns);
+                }
+            }
+
+            @else {
+                .offset-#{$breakpoint-name}-#{$i} {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+// Advanced loops to generate utility classes
+// Generate text color classes
+@each $name, $value in $colors {
+    .text-#{$name} {
+        color: $value !important;
+    }
+}
+
+// Generate background color classes
+@each $name, $value in $colors {
+    .bg-#{$name} {
+        background-color: $value !important;
+        color: color-contrast($name) !important;
+    }
+}
+
+// Generate border color classes
+@each $name, $value in $colors {
+    .border-#{$name} {
+        border-color: $value !important;
+    }
+}

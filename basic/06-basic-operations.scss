@@ -1,0 +1,19 @@
+// Basic mathematical operations
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: $spacing-md;
+    margin: 0 auto;
+}
+
+.col-half {
+    width: 50% - ($spacing-md * 2);
+    float: left;
+    margin: $spacing-md;
+}
+
+.col-third {
+    width: 33.33% - ($spacing-md * 2);
+    float: left;
+    margin: $spacing-md;
+}

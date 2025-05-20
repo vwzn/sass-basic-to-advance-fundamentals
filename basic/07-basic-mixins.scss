@@ -1,0 +1,13 @@
+// Basic mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    @include flex-center;
+    background-color: white;
+    border-radius: $border-radius;
+    padding: $spacing-md;
+}

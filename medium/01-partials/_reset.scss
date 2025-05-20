@@ -1,0 +1,22 @@
+// Reset stylesheet
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+body {
+    font-family: $font-body;
+    color: $dark-color;
+    background-color: $light-color;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

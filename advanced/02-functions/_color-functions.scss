@@ -1,0 +1,31 @@
+// Advanced color manipulation functions
+@function color($color-name, $opacity: 1) {
+  @if not map-has-key($colors, $color-name) {
+    @error "Color '#{$color-name}' not found in $colors map!";
+  }
+  
+  $color-value: map-get($colors, $color-name);
+  
+  @if $opacity < 1 {
+    @return rgba($color-value, $opacity);
+  } @else {
+    @return $color-value;
+  }
+}
+
+@function color-contrast($color-name) {
+  $color-value: color($color-name);
+  $luminance: (red($color-value) * 0.299 + green($color-value) * 0.587 + blue($color-value) * 0.114) / 255;
+  
+  @return if($luminance > 0.55, color('dark'), color('white'));
+}
+
+@function color-darken($color-name, $percentage) {
+  $color-value: color($color-name);
+  @return darken($color-value, $percentage);
+}
+
+@function color-lighten($color-name, $percentage) {
+  $color-value: color($color-name);
+  @return lighten($color-value, $percentage);
+}

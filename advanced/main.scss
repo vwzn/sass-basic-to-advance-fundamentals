@@ -1,0 +1,104 @@
+// Main file - importing all advanced features
+// Import configuration
+@import '01-config/config';
+
+// Import functions
+@import '02-functions/color-functions';
+@import '02-functions/breakpoint-functions';
+
+// Import mixins
+@import '03-mixins/responsive-mixins';
+@import '03-mixins/grid-mixins';
+@import '03-mixins/utility-mixins';
+
+// Import loops for utilities
+@import '04-loops/color-loops';
+@import '04-loops/spacing-loops';
+@import '04-loops/grid-loops';
+
+// Import component styles
+@import '05-example-components/buttons';
+
+// Advanced helper for enumeration in loops
+@function enumerate($list) {
+    $result: (
+    );
+
+@for $i from 1 through length($list) {
+    $result: append($result, $i);
+}
+
+@return zip($result, $list);
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+    color: color('dark');
+}
+
+// Container classes
+.container {
+    @include make-container();
+
+    @each $breakpoint, $container-max-width in ('sm': 540px,
+        'md': 720px,
+        'lg': 960px,
+        'xl': 1140px,
+        'xxl': 1320px) {
+        @include media-up($breakpoint) {
+            max-width: $container-max-width;
+        }
+    }
+}
+
+.container-fluid {
+    @include make-container();
+}
+
+// Row
+.row {
+    @include make-row();
+}
+
+// Advanced layout example
+.page {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar main aside"
+        "footer footer footer";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+
+    &__header {
+        grid-area: header;
+    }
+
+    &__sidebar {
+        grid-area: sidebar;
+    }
+
+    &__main {
+        grid-area: main;
+    }
+
+    &__aside {
+        grid-area: aside;
+    }
+
+    &__footer {
+        grid-area: footer;
+    }
+
+    @include media-down('md') {
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar"
+            "aside"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+}

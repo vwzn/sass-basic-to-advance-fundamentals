@@ -1,0 +1,24 @@
+// Control directives - if/else
+@mixin theme($light-theme: true) {
+    @if $light-theme {
+        background-color: $light-color;
+        color: $dark-color;
+        border: 1px solid darken($light-color, 10%);
+    }
+
+    @else {
+        background-color: $dark-color;
+        color: $light-color;
+        border: 1px solid lighten($dark-color, 10%);
+    }
+}
+
+.panel-light {
+    @include theme(true);
+    padding: $spacing-lg;
+}
+
+.panel-dark {
+    @include theme(false);
+    padding: $spacing-lg;
+}
